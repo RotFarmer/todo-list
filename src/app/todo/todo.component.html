@@ -2,7 +2,7 @@
   <div class="todo-list">
     <h1>TO DO List</h1>
     <p>a place to store your todos</p>
-    <form #todoSearch="ngForm" (input)="todoSearchTerm(todoSearch)">
+    <form #searchForm="ngForm" (input)="setTodoSearchTerm(searchForm)">
       <label for="searchTerm">Search Term</label>
       <input type="text" id="searchTerm" name="searchTerm" ngModel />
     </form>
@@ -11,9 +11,9 @@
       <!-- attribute directives []="" -->
       <li *ngFor="let todo of todoSearch(); index as i">
         <div class="todo">
-          <button [disabled]="todo.completed">complete</button>
+          <button [disabled]="todo.completed" (click)="completeTask(i)">complete</button>
           <p [ngClass]="{ strikethrough: todo.completed }">{{ todo.task }}</p>
-          <button>x</button>
+          <button (click)="removeTask(i)">x</button>
         </div>
       </li>
     </ol>
