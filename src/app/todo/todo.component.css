@@ -1,0 +1,16 @@
+.contain-all{
+    display: flex;
+    flex-direction: column;
+}
+
+.todo-list{
+    background-color: aliceblue;
+}
+.strikethrough{
+    text-decoration: line-through;
+}
+.todo{
+    display:flex;
+    justify-content: space-between;
+    padding-bottom: 5px;;
+}

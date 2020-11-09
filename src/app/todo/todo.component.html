@@ -1,0 +1,28 @@
+<main class="contain-all">
+  <div class="todo-list">
+    <h1>TO DO List</h1>
+    <p>a place to store your todos</p>
+    <form #todoSearch="ngForm" (input)="todoSearchTerm(todoSearch)">
+      <label for="searchTerm">Search Term</label>
+      <input type="text" id="searchTerm" name="searchTerm" ngModel />
+    </form>
+    <ol>
+      <!-- all sturctural directives follow *="" -->
+      <!-- attribute directives []="" -->
+      <li *ngFor="let todo of todoSearch(); index as i">
+        <div class="todo">
+          <button [disabled]="todo.completed">complete</button>
+          <p [ngClass]="{ strikethrough: todo.completed }">{{ todo.task }}</p>
+          <button>x</button>
+        </div>
+      </li>
+    </ol>
+  </div>
+  <div class="form container">
+  <form #todoForm="ngForm" (ngSubmit)="addTask(todoForm)">
+    <label for="task">What do you need to do?</label>
+    <input type="text" id="task" name="task"placeholder="what to do?" ngModel required>
+    <button [disabled]="todoForm.invalid">Add</button>
+  </form>
+</div>
+</main>
